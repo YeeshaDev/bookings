@@ -7,8 +7,7 @@ export default function Home() {
   return (
     <main>
      <h1>lets start here </h1> 
-     <p>This is an airbnb clone app </p>
-     <h2>This is frustrating</h2>
+     
     </main>
   )
 }
