@@ -40,14 +40,15 @@ const LoginModal= () => {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = 
+  (data) => {
     setIsLoading(true);
 
-    signIn('credentials',{
-        ...data,
-        redirect:false,
-    })
-    .then((callback) => {
+    signIn('credentials', { 
+        ...data, 
+        redirect: false,
+      })
+      .then((callback) => {
         setIsLoading(false);
   
         if (callback?.ok) {
@@ -118,7 +119,7 @@ const LoginModal= () => {
           bg-white
         "
       >
-        <p>Already have an account?
+        <p>Don't have an account?
           <span 
             onClick={onToggle} 
             className="
@@ -126,7 +127,7 @@ const LoginModal= () => {
               cursor-pointer 
               hover:underline
             "
-            > Log in</span>
+            > Sign Up</span>
         </p>
       </div>
     </div>
