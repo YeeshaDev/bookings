@@ -4,6 +4,7 @@ import Navbar from './components/header/Navbar'
 import ClientOnly from './components/ClientOnly'
 import Modal from './components/modals/Modal'
 import RegisterModal from './components/modals/RegisterModal'
+import LoginModal from './components/modals/LoginModal'
 import ToasterProvider from './providers/ToasterProvider'
 
 const font =Poppins({
@@ -28,6 +29,7 @@ export default function RootLayout({
         <ClientOnly>
           <ToasterProvider />
           <RegisterModal/>
+          <LoginModal />
         <Navbar/>
         </ClientOnly>
         {children}</body>
