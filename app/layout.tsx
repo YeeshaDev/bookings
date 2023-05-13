@@ -2,10 +2,13 @@ import './globals.css'
 import { Poppins } from 'next/font/google'
 import Navbar from './components/header/Navbar'
 import ClientOnly from './components/ClientOnly'
-import Modal from './components/modals/Modal'
 import RegisterModal from './components/modals/RegisterModal'
 import LoginModal from './components/modals/LoginModal'
 import ToasterProvider from './providers/ToasterProvider'
+import getCurrentUser from './actions/getCurrentUser'
+import SearchModal from './components/modals/SearchModal'
+import RentModal from './components/modals/RentModal'
+
 
 const font =Poppins({
    weight: ['200','300','500'],
@@ -17,22 +20,30 @@ export const metadata = {
   description: 'This is a booking website',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const currentUser = await getCurrentUser();
+
   return (
     <html lang="en">
       
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
-          <RegisterModal/>
           <LoginModal />
-        <Navbar/>
-        </ClientOnly>
-        {children}</body>
+          <RegisterModal/>
+          <SearchModal />
+          <RentModal/>
+        <Navbar currentUser={currentUser} />
+        </ClientOnly> 
+        <div className="pb-20 pt-28">
+          {children}
+        </div>
+        </body>
     </html>
   )
 }
